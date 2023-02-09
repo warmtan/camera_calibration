@@ -69,7 +69,7 @@ class Calibrator(object):
         # calibrate the camera
         ret, mat_intri, coff_dis, v_rot, v_trans = cv2.calibrateCamera(points_world, points_pixel, gray_img.shape[::-1], None, None)
         print ("ret: {}".format(ret))
-        print ("intrinsic matrix: \n {}".format(mat_intri))
+        print ("intrinsic matrix(内参矩阵): \n {}".format(mat_intri))
         # in the form of (k_1, k_2, p_1, p_2, k_3)
         print ("distortion cofficients: \n {}".format(coff_dis))
         print ("rotation vectors: \n {}".format(v_rot))
