@@ -71,9 +71,9 @@ class Calibrator(object):
         print ("ret: {}".format(ret))
         print ("intrinsic matrix(内参矩阵): \n {}".format(mat_intri))
         # in the form of (k_1, k_2, p_1, p_2, k_3)
-        print ("distortion cofficients: \n {}".format(coff_dis))
-        print ("rotation vectors: \n {}".format(v_rot))
-        print ("translation vectors: \n {}".format(v_trans))
+        print ("distortion cofficients(畸变参数): \n {}".format(coff_dis))
+        print ("rotation vectors(旋转向量): \n {}".format(v_rot))
+        print ("translation vectors(平移向量): \n {}".format(v_trans))
 
         # calculate the error of reproject
         total_error = 0
@@ -81,7 +81,7 @@ class Calibrator(object):
             points_pixel_repro, _ = cv2.projectPoints(points_world[i], v_rot[i], v_trans[i], mat_intri, coff_dis)
             error = cv2.norm(points_pixel[i], points_pixel_repro, cv2.NORM_L2) / len(points_pixel_repro)
             total_error += error
-        print("Average error of reproject: {}".format(total_error / len(points_world)))
+        print("Average error of reproject(重投影的平均误差): {}".format(total_error / len(points_world)))
 
         self.mat_intri = mat_intri
         self.coff_dis = coff_dis
